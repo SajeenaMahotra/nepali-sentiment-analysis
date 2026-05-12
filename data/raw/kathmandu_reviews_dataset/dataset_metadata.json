@@ -1,0 +1,105 @@
+{
+  "dataset_name": "Kathmandu Marketplace Code-Mixed Reviews v2",
+  "version": "2.0.0",
+  "created": "2026-04-28",
+  "total_reviews": 100000,
+  "class_distribution": {
+    "positive": 58000,
+    "negative": 30000,
+    "neutral": 12000
+  },
+  "schema_columns": [
+    "review_id",
+    "product_id",
+    "product_name",
+    "product_category",
+    "brand",
+    "product_price_npr",
+    "seller_name",
+    "delivery_partner",
+    "reviewer_location",
+    "payment_method",
+    "review_date",
+    "review_text",
+    "rating",
+    "sentiment_label",
+    "verified_purchase",
+    "helpful_count",
+    "review_length_chars",
+    "review_length_tokens",
+    "english_token_ratio",
+    "nepali_token_ratio",
+    "language_dominance",
+    "has_emoji"
+  ],
+  "products_total": 183,
+  "categories": [
+    "Mobiles & Tablets",
+    "Electronics & Accessories",
+    "Fashion - Men",
+    "Fashion - Women",
+    "Home & Lifestyle",
+    "Books & Stationery",
+    "Groceries",
+    "Beauty & Health",
+    "Baby & Toys",
+    "Sports & Outdoor"
+  ],
+  "sellers": 30,
+  "locations": [
+    "Kathmandu",
+    "Lalitpur",
+    "Bhaktapur",
+    "Pokhara",
+    "Biratnagar",
+    "Birgunj",
+    "Butwal",
+    "Chitwan",
+    "Dharan",
+    "Hetauda",
+    "Janakpur",
+    "Nepalgunj",
+    "Itahari",
+    "Banepa",
+    "Dhulikhel",
+    "Bharatpur",
+    "Damak",
+    "Tikapur",
+    "Tulsipur",
+    "Ghorahi"
+  ],
+  "payment_methods": [
+    "Cash on Delivery",
+    "eSewa",
+    "Khalti",
+    "IME Pay",
+    "Card",
+    "ConnectIPS",
+    "FonePay"
+  ],
+  "delivery_partners": [
+    "Daraz Express",
+    "Aramex",
+    "Pathao",
+    "InDriver Logistics",
+    "Nepal Can Move",
+    "Local Courier",
+    "Tootle Delivery",
+    "DHL Nepal"
+  ],
+  "splits": {
+    "train": 70000,
+    "val": 15000,
+    "test": 15000
+  },
+  "reproducibility": "random.seed(42)",
+  "diversity_metrics": {
+    "unique_review_texts": 83030,
+    "uniqueness_pct": 83.03
+  },
+  "modeled_after": [
+    "Pradhananga & Sah (2023) Transformer-Based Sentiment Analysis on Romanized Nepali Daraz reviews",
+    "Chaudhary et al. (2025) NEPTUN normalization for Romanized Nepali"
+  ],
+  "notes": "Synthetic dataset; not from any real marketplace. Generic 'Kathmandu marketplace' framing."
+}

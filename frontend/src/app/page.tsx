@@ -213,7 +213,7 @@ export default function Home() {
                 Analyze a Review
               </h1>
               <p className="text-white/40 text-sm">
-                Paste a Daraz product review to classify its sentiment.
+                Paste a product review to classify its sentiment.
               </p>
             </div>
 

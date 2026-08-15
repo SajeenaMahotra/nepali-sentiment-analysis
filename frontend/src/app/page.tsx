@@ -5,9 +5,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 const MODELS = [
-  { id: "logistic_regression", label: "Logistic Regression", f1: "0.63", best: true },
-  { id: "svm", label: "SVM", f1: "0.60", best: false },
-  { id: "naive_bayes", label: "Naive Bayes", f1: "0.51", best: false },
+  { id: "logistic_regression", label: "Logistic Regression", f1: "0.65", best: true },
+  { id: "svm", label: "SVM", f1: "0.64", best: false },
+  { id: "naive_bayes", label: "Naive Bayes", f1: "0.56", best: false },
 ];
 
 const SENTIMENT_CONFIG: Record<string, { label: string; accent: string; bar: string; border: string; glow: string }> = {

@@ -2,15 +2,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import re
-import nltk
-from nltk.corpus import stopwords
-
-nltk.download('stopwords', quiet=True)
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
 app = Flask(__name__)
 CORS(app)
 
-# Load models and vectorizer
+# Load models and vectorizer ONCE at import time 
 vectorizer = joblib.load('../models/tfidf_vectorizer.pkl')
 models = {
     'logistic_regression': joblib.load('../models/logistic_regression_model.pkl'),
@@ -18,18 +15,19 @@ models = {
     'naive_bayes': joblib.load('../models/naive_bayes_model.pkl'),
 }
 
+# Hardcoded English stopwords (from sklearn, already a dependency - no network call,
+# no nltk.download(), no cold-start delay). This is the fix for the slowness.
 NEPALI_STOPWORDS = [
     "cha", "chha", "chan", "chu", "tha", "thiyo", "ho", "hola", "hoina",
     "ni", "nai", "pani", "lai", "le", "ma", "ko", "ka", "ki", "ra", "ta",
-    "tara", "ani", "yo", "tyo", "yो", "k", "ki", "kasari", "kina", "kun",
+    "tara", "ani", "yo", "tyo", "k", "kasari", "kina", "kun",
     "aba", "aaba", "ali", "ekdam", "dherai", "thikai", "bilkul", "purai",
     "gardai", "garxa", "garcha", "bhayo", "bhanne", "bhako", "gareko",
     "garne", "garnu", "dinu", "linu", "aunu", "jaanu", "basnu", "hunxa",
     "huxa", "huncha", "bhayena", "nagarne", "nagareko", "nabhako"
 ]
 
-english_stopwords = set(stopwords.words('english'))
-all_stopwords = english_stopwords.union(set(NEPALI_STOPWORDS))
+all_stopwords = set(ENGLISH_STOP_WORDS).union(set(NEPALI_STOPWORDS))
 
 def preprocess(text):
     text = text.lower()
@@ -54,7 +52,7 @@ def predict():
     cleaned = preprocess(text)
     vectorized = vectorizer.transform([cleaned])
     prediction = models[model_name].predict(vectorized)[0]
-    
+
     # LinearSVC doesn't support predict_proba
     if hasattr(models[model_name], 'predict_proba'):
         proba = models[model_name].predict_proba(vectorized)[0].tolist()
@@ -80,4 +78,3 @@ if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host="0.0.0.0", port=port)
-    

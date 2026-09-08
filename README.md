@@ -38,31 +38,33 @@ Sentiment labels were derived through weak labeling based on star ratings (4-5 s
 
 ## Project Structure
 
-├── backend/ # Flask API serving the trained models
-│ ├── app.py
-│ └── requirements.txt
-├── frontend/ # Next.js + TypeScript web app
-│ └── src/
-├── data/ # Raw and processed review data
-├── models/ # Saved classical model artifacts (joblib)
-├── notebooks/ # End-to-end pipeline, run in order
-│ ├── 00_data_collection.ipynb
-│ ├── 01_EDA.ipynb
-│ ├── 02_preprocessing.ipynb
-│ ├── 03_feature_extraction.ipynb
-│ ├── 04_model_training.ipynb
-│ ├── 05_test_evaluation.ipynb
-│ ├── 06_muril_finetuning.ipynb
-│ ├── 06b_xlmroberta_finetuning.ipynb
-│ └── 07_paper_figures.ipynb
-├── src/ # Reusable pipeline modules
-│ ├── preprocess.py
-│ ├── features.py
-│ ├── models.py
-│ └── evaluate.py
-├── results/ # Classification reports and result CSVs
-├── paper_figures/ # Generated figures for the accompanying paper
+```
+├── backend/               # Flask API serving the trained models
+│   ├── app.py
+│   └── requirements.txt
+├── frontend/               # Next.js + TypeScript web app
+│   └── src/
+├── data/                   # Raw and processed review data
+├── models/                 # Saved classical model artifacts (joblib)
+├── notebooks/               # End-to-end pipeline, run in order
+│   ├── 00_data_collection.ipynb
+│   ├── 01_EDA.ipynb
+│   ├── 02_preprocessing.ipynb
+│   ├── 03_feature_extraction.ipynb
+│   ├── 04_model_training.ipynb
+│   ├── 05_test_evaluation.ipynb
+│   ├── 06_muril_finetuning.ipynb
+│   ├── 06b_xlmroberta_finetuning.ipynb
+│   └── 07_paper_figures.ipynb
+├── src/                     # Reusable pipeline modules
+│   ├── preprocess.py
+│   ├── features.py
+│   ├── models.py
+│   └── evaluate.py
+├── results/                 # Classification reports and result CSVs
+├── paper_figures/           # Generated figures for the accompanying paper
 └── requirements.txt
+```
 
 
 ## Getting Started
